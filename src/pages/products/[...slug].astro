@@ -281,6 +281,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
 
   let timeline = gsap.timeline({ defaults: { overwrite: "auto" } });
 
+<<<<<<< HEAD
   timeline.to("#fadeText", {
     duration: 1.5,
     autoAlpha: 1,
@@ -288,6 +289,15 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     delay: 1,
     ease: "power2.out",
   });
+=======
+          changeHeadingStyle(
+            btn,
+            ["text-neutral-800", "dark:text-neutral-200"],
+            ["text-orange-400", "dark:text-orange-300"],
+          );
+        }
+      }
+>>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
 
   timeline.to(
     "#fadeInUp",
@@ -323,7 +333,12 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
         }
 
         changeHeadingStyle(
+<<<<<<< HEAD
           btn,
+=======
+          button,
+          ["text-orange-400", "dark:text-orange-300"],
+>>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
           ["text-neutral-800", "dark:text-neutral-200"],
           ["text-orange-400", "dark:text-orange-300"]
         );
@@ -353,6 +368,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       );
     }
 
+<<<<<<< HEAD
     function changeHeadingStyle(
       button: any,
       addClasses: any,
@@ -362,6 +378,14 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       if (heading) {
         heading.classList.remove(...removeClasses);
         heading.classList.add(...addClasses);
+=======
+      if (tabButtons.length > 0) {
+        changeHeadingStyle(
+          tabButtons[0],
+          ["text-orange-400", "dark:text-orange-300"],
+          [],
+        );
+>>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
       }
     }
 

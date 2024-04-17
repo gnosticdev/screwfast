@@ -1,9 +1,16 @@
 ---
 // Import section components
+<<<<<<< HEAD
 import { SITE } from '@data/constants'
 import MainLayout from '@/layouts/MainLayout.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+=======
+import { SITE } from "@data/constants";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+>>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
 
 // Use `getStaticPaths` to generate static routes for generated pages on build
 export async function getStaticPaths() {
@@ -38,7 +45,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`
           </div>
           <div
               id="progress-mobile"
-              class="fixed left-0 top-0 h-2 w-full bg-gradient-to-r from-[#fa5a15]/30 to-[#fa5a15] md:hidden"
+              class="fixed left-0 top-0 h-2 w-full bg-gradient-to-r from-orange-400/30 to-orange-400 md:hidden"
           >
           </div>
           <div id="pin" class="mt-10 hidden space-y-4 md:block">
@@ -47,7 +54,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`
             >
               <div
                   id="progress"
-                  class="h-px w-full bg-gradient-to-r from-[#fa5a15]/30 to-[#fa5a15]"
+                  class="h-px w-full bg-gradient-to-r from-orange-400/30 to-orange-400"
               >
               </div>
             </div>

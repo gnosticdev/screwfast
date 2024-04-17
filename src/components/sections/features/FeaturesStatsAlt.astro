@@ -13,7 +13,11 @@ interface Props {
 }
 
 // Define SVG marker to be used in the component
+<<<<<<< HEAD
 const ListItemMarker: string = `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-0.5 h-6 w-6 text-orange-400 dark:text-orange-300 flex-none"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`;
+=======
+const ListItemMarker: string = `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-0.5 h-6 w-6 text-orange-400 dark:text-orange-300"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`;
+>>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
 ---
 
 <section
