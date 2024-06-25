@@ -87,7 +87,7 @@ ScrewFast is an open-source template designed for quick and efficient web projec
 * [x] **Post Feedback Component**:
   * Collects user feedback at the end of each blog post.
   * Serves as a UI demonstration with no live back-end integration.
-  
+
 * [x] **Starlight Documentation Theme Integration**:
   * A sleek, user-friendly, full-featured documentation theme, which enhances the readability and usability of documentation.
   * Offers a range of features such as site navigation, built-in search functionality, dark mode, syntax highlighting for code, and improved SEO.
@@ -155,7 +155,7 @@ This creates a `dist/` directory with your built site (configurable via [outDir 
 
 ### Deploying to Vercel
 
-Click the button below to start deploying your project on Vercel:  
+Click the button below to start deploying your project on Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmearashadowfax%2FScrewFast)
 
@@ -166,7 +166,7 @@ ScrewFast organizes modular components, content, and layouts to streamline devel
 ```md
 
 src/
-├── assets/               
+├── assets/
 │   ├── scripts/          # JS scripts
 │   └── styles/           # CSS styles
 ├── components/           # Reusable components
@@ -176,9 +176,9 @@ src/
 │   └── ui/               # UI components categorized by functionality
 ├── content/              # Markdown files for blog posts, insights, products, and site configuration
 │   ├── blog/
-│   ├── docs/           
-│   ├── insights/         
-│   ├── products/         
+│   ├── docs/
+│   ├── insights/
+│   ├── products/
 │   └── config.ts         # Contains site-wide configuration options
 ├── data_files/           # Strings stored as JSON files
 ├── images/               # Static image assets for use across the website
@@ -186,12 +186,12 @@ src/
 │   └── MainLayout.astro  # The main wrapping layout for all pages
 ├── pages/                # Astro files representing individual pages and website sections
 │   ├── 404.astro         # Custom 404 page
-│   ├── blog/   
+│   ├── blog/
 │   ├── fr/               # Localized content
-│   ├── contact.astro     
+│   ├── contact.astro
 │   ├── index.astro       # The landing/home page
-│   ├── insights/         
-│   ├── products/         
+│   ├── insights/
+│   ├── products/
 │   ├── robots.txt.ts     # Dynamically generates robots.txt
 │   └── services.astro
 └── utils/                # Shared utility functions and helpers
@@ -206,7 +206,7 @@ Static files served directly to the browser are within the `public` directory at
 
 public/
 └── banner-pattern.svg
-    
+
 ```
 
 ## Customization
