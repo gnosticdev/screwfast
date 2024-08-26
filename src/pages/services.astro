@@ -33,6 +33,8 @@ interface Article {
   imgTwoAlt?: string
 }
 
+const defaultImage = await import('@images/social.png')
+
 const articles: Article[] = [
   {
     isRightSection: true,
@@ -147,8 +149,8 @@ const pageTitle: string = `Services | ${SITE.title}`
         <LeftSection
           title={article.title}
           subTitle={article.subTitle}
-          img={article.img}
-          imgAlt={article.imgAlt}
+          img={article.img ?? {src: '../images/social.png', format: 'avif', height: 300, width: 400}}
+          imgAlt={article.imgAlt ?? 'social image'}
           btnExists={article.btnExists}
           btnTitle={article.btnTitle}
           btnURL={article.btnURL}

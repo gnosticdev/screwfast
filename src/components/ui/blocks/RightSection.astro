@@ -17,6 +17,13 @@ interface Props {
   imgTwo?: ImageMetadata
   imgTwoAlt?: string
 }
+
+const defaultImage: ImageMetadata = {
+  src: '/src/images/social.png',
+  format: 'avif',
+  height: 300,
+  width: 400,
+}
 ---
 <!-- Root section of the component -->
 <section
@@ -45,8 +52,8 @@ interface Props {
         <!-- Single image -->
         <Image
           class="w-full rounded-lg"
-          src={imgOne}
-          alt={imgOneAlt}
+          src={imgOne ?? defaultImage}
+          alt={imgOneAlt ?? 'social image'}
           format={"avif"}
         />
       </div>
@@ -55,16 +62,16 @@ interface Props {
         <!-- First image in a two-image layout -->
         <Image
           class="w-full rounded-xl"
-          src={imgOne}
-          alt={imgOneAlt}
+          src={imgOne ?? defaultImage}
+          alt={imgOneAlt ?? 'social image'}
           draggable={"false"}
           format={"avif"}
         />
         <!-- Second image in a two-image layout -->
         <Image
           class="mt-4 w-full rounded-xl lg:mt-10"
-          src={imgTwo}
-          alt={imgTwoAlt}
+            src={imgTwo ?? defaultImage}
+          alt={imgTwoAlt ?? 'social image'}
           draggable={"false"}
           format={"avif"}
         />

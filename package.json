@@ -4,8 +4,9 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "astro dev",
-		"lint": "biome check . --apply --unsafe",
-		"build": "astro check && astro build && bun process-html.mjs",
+		"lint": "biome check . --write --unsafe",
+		"check": "astro check --minimumSeverity=error",
+		"build": "bun run check && astro build && bun process-html.mjs",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
