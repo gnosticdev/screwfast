@@ -1,27 +1,27 @@
 ---
+import TabContent from '@components/ui/blocks/TabContent.astro'
 // Import the necessary dependencies
-import TabNav from "@components/ui/blocks/TabNav.astro";
-import TabContent from "@components/ui/blocks/TabContent.astro";
-import Icon from "@components/ui/icons/Icon.astro";
+import TabNav from '@components/ui/blocks/TabNav.astro'
+import Icon from '@components/ui/icons/Icon.astro'
 
 // Define props from Astro
-const { title, tabs } = Astro.props;
+const { title, tabs } = Astro.props
 
 // Define TypeScript interface for tab object
 interface Tab {
-  heading: string;
-  content: string;
-  svg: string;
-  src: any;
-  alt: string;
-  first?: boolean;
-  second?: boolean;
+  heading: string
+  content: string
+  svg: string
+  src: ImageMetadata
+  alt: string
+  first?: boolean
+  second?: boolean
 }
 
 // Define TypeScript interface for props
 interface Props {
-  title?: string;
-  tabs: Tab[];
+  title?: string
+  tabs: Tab[]
 }
 ---
 

@@ -1,33 +1,25 @@
 ---
 // Define props from Astro
-const {
-  heading,
-  content,
-  isAddressVisible,
-  addressContent,
-  isLinkVisible,
-  linkTitle,
-  linkURL,
-  isArrowVisible,
-} = Astro.props;
+const { heading, content, isAddressVisible, addressContent, isLinkVisible, linkTitle, linkURL, isArrowVisible } =
+  Astro.props
 
 // Define TypeScript interface for props
 interface Props {
-  heading?: string;
-  content?: string;
-  isAddressVisible?: boolean;
-  addressContent?: string;
-  isLinkVisible?: boolean;
-  linkTitle?: string;
-  linkURL?: string;
-  isArrowVisible?: boolean;
+  heading?: string
+  content?: string
+  isAddressVisible?: boolean
+  addressContent?: string
+  isLinkVisible?: boolean
+  linkTitle?: string
+  linkURL?: string
+  isArrowVisible?: boolean
 }
 
 // Define SVG arrow to be used in the component
 const arrowSVG: string = `<svg
 class="h-4 w-4 flex-shrink-0 transition ease-in-out group-hover:translate-x-1"
 fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
-<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /> </svg>`;
+<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /> </svg>`
 ---
 
 <!-- Root container, which arranges the heading and content -->

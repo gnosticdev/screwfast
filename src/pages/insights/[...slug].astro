@@ -1,31 +1,30 @@
 ---
-// Import section components
-<<<<<<< HEAD
-import { SITE } from '@data/constants'
-import MainLayout from '@/layouts/MainLayout.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
-=======
-import { SITE } from "@data/constants";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
->>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
+import MainLayout from '@/layouts/MainLayout.astro'
+// Import section components
+import { SITE } from '@data/constants'
 
 // Use `getStaticPaths` to generate static routes for generated pages on build
 export async function getStaticPaths() {
+  const insightPosts = await getCollection('insights')
   const insightPosts = await getCollection('insights')
   return insightPosts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }))
 }
+))
+}
 
 // Get the props for this page that define a specific insight post
 const { post } = Astro.props
+const { post } = Astro.props
 
 const { Content } = await post.render()
+const { Content } = await post.render()
 
+const pageTitle: string = `${post.data.title} | ${SITE.title}`
 const pageTitle: string = `${post.data.title} | ${SITE.title}`
 ---
 

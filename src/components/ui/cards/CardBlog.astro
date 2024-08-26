@@ -1,15 +1,14 @@
 ---
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 // Import necessary components and utilities
-import AvatarBlog from "@components/ui/avatars/AvatarBlog.astro";
-import { Image } from "astro:assets";
-import { formatDate } from "@utils/utils";
-import type { CollectionEntry } from "astro:content";
+import AvatarBlog from '@components/ui/avatars/AvatarBlog.astro'
+import { formatDate } from '@utils/utils'
 
-const { blogEntry, blogLocale = "" } = Astro.props;
+const { blogEntry } = Astro.props
 
 interface Props {
-  blogEntry: CollectionEntry<"blog">;
-  blogLocale?: string;
+  blogEntry: CollectionEntry<'blog'>
 }
 ---
 

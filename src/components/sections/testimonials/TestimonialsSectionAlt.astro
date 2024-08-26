@@ -1,23 +1,23 @@
 ---
 // Import AvatarTestimonialSection component for use in this module
-import AvatarTestimonialSection from "@components/ui/avatars/AvatarTestimonialSection.astro";
+import AvatarTestimonialSection from '@components/ui/avatars/AvatarTestimonialSection.astro'
 
 // Define props from Astro
-const { title, testimonials } = Astro.props;
+const { title, testimonials } = Astro.props
 
 // Define TypeScript interface for Testimonial
 interface Testimonial {
-  content: string;
-  author: string;
-  role: string;
-  avatarSrc: string;
-  avatarAlt: string;
+  content: string
+  author: string
+  role: string
+  avatarSrc: string
+  avatarAlt: string
 }
 
 // Define TypeScript interface for props
 interface Props {
-  title: string;
-  testimonials: Testimonial[];
+  title: string
+  testimonials: Testimonial[]
 }
 ---
 <!-- Main div that wraps the testimonials section -->

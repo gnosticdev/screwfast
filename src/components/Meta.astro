@@ -1,8 +1,8 @@
 ---
-import { getImage } from "astro:assets";
-import { OG, SEO, SITE } from "@data/constants";
-import faviconSvgSrc from "@images/icon.svg";
-import faviconSrc from "@images/icon.png";
+import { getImage } from 'astro:assets'
+import { OG, SEO, SITE } from '@data/constants'
+import faviconSrc from '@images/icon.png'
+import faviconSvgSrc from '@images/icon.svg'
 
 // Default properties for the Meta component. These values are used if props are not provided.
 // 'meta' sets a default description meta tag to describe the page content.
@@ -10,68 +10,64 @@ import faviconSrc from "@images/icon.png";
 const defaultProps = {
   meta: SITE.description,
   structuredData: SEO.structuredData,
-};
+}
 
 // Extract props with default values assigned from defaultProps. Values can be overridden when the component is used.
 // For example:
 // <MainLayout title="Custom Title" meta="Custom description." />
-const {
-  meta = defaultProps.meta,
-  structuredData = defaultProps.structuredData,
-} = Astro.props;
+const { meta = defaultProps.meta, structuredData = defaultProps.structuredData } = Astro.props
 
 // Define the metadata for your website and individual pages
-const URL = `${Astro.site}`; // Set the website URL in astro.config.mjs
-const author = SITE.author;
-const canonical = Astro.url.href;
-const basePath = Astro.url.pathname;
-const ogTitle = OG.title;
-const ogDescription = OG.description;
+const URL = `${Astro.site}` // Set the website URL in astro.config.mjs
+const author = SITE.author
+const canonical = Astro.url.href
+const basePath = Astro.url.pathname
+const ogTitle = OG.title
+const ogDescription = OG.description
 const socialImageRes = await getImage({
   src: OG.image,
   width: 1200,
   height: 600,
-});
-const socialImage = Astro.url.origin + socialImageRes.src; // Get the full URL of the image (https://stackoverflow.com/a/9858694)
+})
+const socialImage = Astro.url.origin + socialImageRes.src // Get the full URL of the image (https://stackoverflow.com/a/9858694)
 
 const languages: { [key: string]: string } = {
-  en: "",
-  fr: "fr",
-};
-
-function createHref(lang: string, prefix: string, path: string): string {
-  const hasPrefix = path.startsWith(`/${prefix}/`);
-
-  const basePath = hasPrefix ? path : `/${prefix}${path}`;
-  const normalizedBasePath = basePath.replace(/\/\/+/g, "/");
-  return `${URL.slice(0, -1)}${normalizedBasePath}`;
+  en: '',
+  fr: 'fr',
 }
 
-const fullPath: string = Astro.url.pathname;
+function createHref(lang: string, prefix: string, path: string): string {
+  const hasPrefix = path.startsWith(`/${prefix}/`)
+
+  const basePath = hasPrefix ? path : `/${prefix}${path}`
+  const normalizedBasePath = basePath.replace(/\/\/+/g, '/')
+  return `${URL.slice(0, -1)}${normalizedBasePath}`
+}
+
+const fullPath: string = Astro.url.pathname
 
 const alternateLanguageLinks: string = Object.entries(languages)
   .map(([lang, prefix]: [string, string]) => {
-    const basePath: string =
-      lang === "en" ? fullPath.replace(/^\/fr\//, "/") : fullPath;
+    const basePath: string = lang === 'en' ? fullPath.replace(/^\/fr\//, '/') : fullPath
 
-    const href: string = createHref(lang, prefix, basePath);
+    const href: string = createHref(lang, prefix, basePath)
 
-    return `<link rel="alternate" hreflang="${lang}" href="${href}" />`;
+    return `<link rel="alternate" hreflang="${lang}" href="${href}" />`
   })
-  .join("\n");
+  .join('\n')
 
 // Generate and optimize the favicon images
 const faviconSvg = await getImage({
   src: faviconSvgSrc,
-  format: "svg",
-});
+  format: 'svg',
+})
 
 const appleTouchIcon = await getImage({
   src: faviconSrc,
   width: 180,
   height: 180,
-  format: "png",
-});
+  format: 'png',
+})
 ---
 
 <!-- Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:

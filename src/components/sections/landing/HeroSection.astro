@@ -1,9 +1,9 @@
 ---
 // Import the necessary dependencies
-import { Image } from "astro:assets";
-import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
-import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
-import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
+import { Image } from 'astro:assets'
+import ReviewComponent from '@components/ui/blocks/ReviewComponent.astro'
+import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro'
+import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro'
 
 // Define props from Astro
 const {
@@ -19,24 +19,24 @@ const {
   rating,
   reviews,
   src,
-  alt
-} = Astro.props;
+  alt,
+} = Astro.props
 
 // Define TypeScript interface for props
 interface Props {
-  title: string;
-  subTitle?: string;
-  primaryBtn?: string;
-  primaryBtnURL?: string;
-  secondaryBtn?: string;
-  secondaryBtnURL?: string;
-  withReview?: boolean;
-  avatars?: Array<string>;
-  starCount?: number;
-  rating?: string;
-  reviews?: string;
-  src?: any;
-  alt?: string;
+  title: string
+  subTitle?: string
+  primaryBtn?: string
+  primaryBtnURL?: string
+  secondaryBtn?: string
+  secondaryBtnURL?: string
+  withReview?: boolean
+  avatars?: Array<string>
+  starCount?: number
+  rating?: string
+  reviews?: string
+  src?: ImageMetadata
+  alt?: string
 }
 ---
 
@@ -62,10 +62,10 @@ interface Props {
   }
     <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->
     <div class="mt-7 grid w-full gap-3 sm:inline-flex">
-      {primaryBtn && 
+      {primaryBtn &&
       <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
       }
-      {secondaryBtn && 
+      {secondaryBtn &&
       <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />
       }
     </div>

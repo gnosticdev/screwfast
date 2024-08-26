@@ -1,16 +1,17 @@
 ---
-import { Icons } from "./icons.ts";
+import { Icons } from './icons.ts'
 
 interface Path {
-  d: string;
-  class?: string;
+  d: string
+  class?: string
 }
 
-const { name } = Astro.props;
+const { name } = Astro.props
 
-let icon = (Icons as any)[name] || {};
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const icon = (Icons as any)[name] || {}
 
-let paths: Path[] = icon.paths || [];
+const paths: Path[] = icon.paths || []
 ---
 
 {

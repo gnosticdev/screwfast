@@ -1,19 +1,19 @@
 ---
 // Extract properties from Astro.props
-const { aria, dataTab, id, heading, content, first } = Astro.props;
+const { aria, dataTab, id, heading, content, first } = Astro.props
 
 // Define TypeScript interface for properties
 interface Props {
-  dataTab: string;
-  id: string;
-  aria: string;
-  heading?: string;
-  content?: string;
-  first?: boolean;
+  dataTab: string
+  id: string
+  aria: string
+  heading?: string
+  content?: string
+  first?: boolean
 }
 // Define button classes
 const BUTTON_CLASS =
-  "dark:hover:bg-neutral-700 rounded-xl p-4 text-start outline-none ring-zinc-500 transition duration-300 hover:bg-neutral-200 focus-visible:ring hs-tab-active:bg-neutral-50 hs-tab-active:shadow-md hs-tab-active:hover:border-transparent dark:ring-zinc-200 dark:focus:outline-none  dark:hs-tab-active:bg-neutral-700/60 md:p-5";
+  'dark:hover:bg-neutral-700 rounded-xl p-4 text-start outline-none ring-zinc-500 transition duration-300 hover:bg-neutral-200 focus-visible:ring hs-tab-active:bg-neutral-50 hs-tab-active:shadow-md hs-tab-active:hover:border-transparent dark:ring-zinc-200 dark:focus:outline-none  dark:hs-tab-active:bg-neutral-700/60 md:p-5'
 
 /*
 first: This property should be set to true for the initial TabNav component in your list

@@ -1,12 +1,11 @@
 ---
-import mainLogo from "@images/starlight/screwfast_logo_dark.svg?raw";
-import docsLogo from "@images/starlight/docs_logo.svg?raw";
-import type { Props } from "@astrojs/starlight/props";
+import type { Props } from '@astrojs/starlight/props'
+import docsLogo from '@images/starlight/docs_logo.svg?raw'
+import mainLogo from '@images/starlight/screwfast_logo_dark.svg?raw'
 
-
-const main = "/";
-const locale = Astro.props.locale ? Astro.props.locale + "/" : "";
-const docs = "/" + locale + "welcome-to-docs/";
+const main = '/'
+const locale = Astro.props.locale ? `${Astro.props.locale}/` : ''
+const docs = `/${locale}welcome-to-docs/`
 ---
 
 <span class="site-title flex">

@@ -1,20 +1,20 @@
 ---
+import AuthBtn from '@components/ui/buttons/AuthBtn.astro'
+import GoogleBtn from '@components/ui/buttons/GoogleBtn.astro'
+import Checkbox from './input/Checkbox.astro'
 // Import necessary components from their individual files
-import EmailInput from "./input/EmailInput.astro";
-import PasswordInput from "./input/PasswordInput.astro";
-import Checkbox from "./input/Checkbox.astro";
-import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
-import GoogleBtn from "@components/ui/buttons/GoogleBtn.astro";
+import EmailInput from './input/EmailInput.astro'
+import PasswordInput from './input/PasswordInput.astro'
 
 // Variables for customization of the LoginModal Component
 
 const config = {
-  id: "hs-toggle-between-modals-login-modal", // Modal IDENTIFIER
-  title: "Sign in", // Main HEADING
+  id: 'hs-toggle-between-modals-login-modal', // Modal IDENTIFIER
+  title: 'Sign in', // Main HEADING
   subTitle: "Don't have an account yet?", // Sub-Heading TEXT
-  registerBtn: "Sign up here", // Text for REGISTRATION BUTTON
-  registerBtnDataHS: "#hs-toggle-between-modals-register-modal", // TARGET LINK for registration button
-};
+  registerBtn: 'Sign up here', // Text for REGISTRATION BUTTON
+  registerBtnDataHS: '#hs-toggle-between-modals-register-modal', // TARGET LINK for registration button
+}
 ---
 
 <div

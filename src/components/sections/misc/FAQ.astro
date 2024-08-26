@@ -1,27 +1,27 @@
 ---
 // Import the necessary AccordionItem component and JSON data
-import AccordionItem from "@components/ui/blocks/AccordionItem.astro";
+import AccordionItem from '@components/ui/blocks/AccordionItem.astro'
 
 // Define props from Astro
-const { title, faqs } = Astro.props;
+const { title, faqs } = Astro.props
 
 // Define TypeScript interface for props
 interface Faq {
-  question: string;
-  answer: string;
+  question: string
+  answer: string
 }
 
 interface FaqGroup {
-  subTitle?: string;
-  faqs: Faq[];
+  subTitle?: string
+  faqs: Faq[]
 }
 
 interface Props {
-  title: string;
-  faqs: FaqGroup;
+  title: string
+  faqs: FaqGroup
 }
 // Define a helper function to generate ids dynamically.
-const makeId = (base: any, index: any) => `${base}${index + 1}`;
+const makeId = (base: string, index: number) => `${base}${index + 1}`
 ---
 
 <!-- Main container that holds all content. Customized for different viewport sizes. -->

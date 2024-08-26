@@ -1,30 +1,31 @@
 ---
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
 // Import section components
-import MainLayout from "@/layouts/MainLayout.astro";
-import ProductTabBtn from "@components/ui/buttons/ProductTabBtn.astro";
-import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import { SITE } from "@data/constants";
+import MainLayout from '@/layouts/MainLayout.astro'
+import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro'
+import ProductTabBtn from '@components/ui/buttons/ProductTabBtn.astro'
+import { SITE } from '@data/constants'
 
 // Global declaration for gsap animation library
 declare global {
-	interface Window {
-		gsap: any;
-	}
+  interface Window {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    gsap: any
+  }
 }
 // This gets the static paths for all the unique products
 export async function getStaticPaths() {
-	const productEntries = await getCollection("products");
-	return productEntries.map((product) => ({
-		params: { slug: product.slug },
-		props: { product },
-	}));
+  const productEntries = await getCollection('products')
+  return productEntries.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }))
 }
 
-const { product } = Astro.props;
+const { product } = Astro.props
 
-const pageTitle: string = `${product.data.title} | ${SITE.title}`;
+const pageTitle: string = `${product.data.title} | ${SITE.title}`
 ---
 
 <MainLayout title={pageTitle}>
@@ -243,167 +244,142 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     </div>
   </div>
 </MainLayout>
+  <script>
+    import { gsap } from "gsap";
 
-<script>
-  import { gsap } from "gsap";
+    type AnimationSettings = {
+      autoAlpha?: number;
+      y?: number;
+      x?: number;
+      willChange?: string;
+    };
 
-  type AnimationSettings = {
-    autoAlpha?: number;
-    y?: number;
-    x?: number;
-    willChange?: string;
-  };
+    function setElementAnimationDefaults(
+      id: string,
+      settings: AnimationSettings
+    ) {
+      gsap.set(id, settings);
+    }
 
-  function setElementAnimationDefaults(
-    id: string,
-    settings: AnimationSettings
-  ) {
-    gsap.set(id, settings);
-  }
+    setElementAnimationDefaults("#fadeText", {
+      autoAlpha: 0,
+      y: 50,
+      willChange: "transform, opacity",
+    });
 
-  setElementAnimationDefaults("#fadeText", {
-    autoAlpha: 0,
-    y: 50,
-    willChange: "transform, opacity",
-  });
+    setElementAnimationDefaults("#fadeInUp", {
+      autoAlpha: 0,
+      y: 50,
+      willChange: "transform, opacity",
+    });
 
-  setElementAnimationDefaults("#fadeInUp", {
-    autoAlpha: 0,
-    y: 50,
-    willChange: "transform, opacity",
-  });
+    setElementAnimationDefaults("#fadeInMoveRight", {
+      autoAlpha: 0,
+      x: 300,
+      willChange: "transform, opacity",
+    });
 
-  setElementAnimationDefaults("#fadeInMoveRight", {
-    autoAlpha: 0,
-    x: 300,
-    willChange: "transform, opacity",
-  });
+    let timeline = gsap.timeline({ defaults: { overwrite: "auto" } });
 
-  let timeline = gsap.timeline({ defaults: { overwrite: "auto" } });
+    timeline.to("#fadeText", {
+      duration: 1.5,
+      autoAlpha: 1,
+      y: 0,
+      delay: 1,
+      ease: "power2.out",
+    });
 
-<<<<<<< HEAD
-  timeline.to("#fadeText", {
-    duration: 1.5,
-    autoAlpha: 1,
-    y: 0,
-    delay: 1,
-    ease: "power2.out",
-  });
-=======
+    timeline.to(
+      "#fadeInUp",
+      { duration: 1.5, autoAlpha: 1, y: 0, ease: "power2.out" },
+      "-=1.2"
+    );
+
+    timeline.to(
+      "#fadeInMoveRight",
+      { duration: 1.5, autoAlpha: 1, x: 0, ease: "power2.inOut" },
+      "-=1.4"
+    );
+
+    timeline.to("#overlay", { duration: 1, autoAlpha: 0, delay: 0.2 });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function setButtonInactive(btn: any, activeButton: any) {
+        if (btn !== activeButton) {
+          btn.classList.remove(
+            "active",
+            "bg-neutral-100",
+            "hover:border-transparent",
+            "dark:bg-white/[.05]"
+          );
+
+          const tabId = btn.getAttribute("data-target");
+          if (tabId) {
+            const contentElement = document.querySelector(tabId);
+            if (contentElement) {
+              contentElement.classList.add("hidden");
+            }
+          }
+
           changeHeadingStyle(
             btn,
             ["text-neutral-800", "dark:text-neutral-200"],
-            ["text-orange-400", "dark:text-orange-300"],
+            ["text-orange-400", "dark:text-orange-300"]
           );
         }
       }
->>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
 
-  timeline.to(
-    "#fadeInUp",
-    { duration: 1.5, autoAlpha: 1, y: 0, ease: "power2.out" },
-    "-=1.2"
-  );
-
-  timeline.to(
-    "#fadeInMoveRight",
-    { duration: 1.5, autoAlpha: 1, x: 0, ease: "power2.inOut" },
-    "-=1.4"
-  );
-
-  timeline.to("#overlay", { duration: 1, autoAlpha: 0, delay: 0.2 });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    function setButtonInactive(btn: any, activeButton: any) {
-      if (btn !== activeButton) {
-        btn.classList.remove(
+      function activateButton(button: any) {
+        button.classList.add(
           "active",
           "bg-neutral-100",
-          "hover:border-transparent",
+          ",hover:border-transparent",
           "dark:bg-white/[.05]"
         );
 
-        const tabId = btn.getAttribute("data-target");
+        const tabId = button.getAttribute("data-target");
         if (tabId) {
-          const contentElement = document.querySelector(tabId);
-          if (contentElement) {
-            contentElement.classList.add("hidden");
+          const contentElementToShow = document.querySelector(tabId);
+          if (contentElementToShow) {
+            contentElementToShow.classList.remove("hidden");
           }
         }
 
         changeHeadingStyle(
-<<<<<<< HEAD
-          btn,
-=======
           button,
           ["text-orange-400", "dark:text-orange-300"],
->>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
-          ["text-neutral-800", "dark:text-neutral-200"],
-          ["text-orange-400", "dark:text-orange-300"]
+          ["text-neutral-800", "dark:text-neutral-200"]
         );
       }
-    }
 
-    function activateButton(button: any) {
-      button.classList.add(
-        "active",
-        "bg-neutral-100",
-        ",hover:border-transparent",
-        "dark:bg-white/[.05]"
-      );
-
-      const tabId = button.getAttribute("data-target");
-      if (tabId) {
-        const contentElementToShow = document.querySelector(tabId);
-        if (contentElementToShow) {
-          contentElementToShow.classList.remove("hidden");
+      function changeHeadingStyle(
+        button: any,
+        addClasses: any,
+        removeClasses: any
+      ) {
+        let heading = button.querySelector("span");
+        if (heading) {
+          heading.classList.remove(...removeClasses);
+          heading.classList.add(...addClasses);
         }
       }
 
-      changeHeadingStyle(
-        button,
-        ["text-orange-400", "dark:text-orange-300"],
-        ["text-neutral-800", "dark:text-neutral-200"]
-      );
-    }
+      const tabButtons = document.querySelectorAll("[data-target]");
 
-<<<<<<< HEAD
-    function changeHeadingStyle(
-      button: any,
-      addClasses: any,
-      removeClasses: any
-    ) {
-      let heading = button.querySelector("span");
-      if (heading) {
-        heading.classList.remove(...removeClasses);
-        heading.classList.add(...addClasses);
-=======
       if (tabButtons.length > 0) {
         changeHeadingStyle(
           tabButtons[0],
           ["text-orange-400", "dark:text-orange-300"],
-          [],
+          []
         );
->>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
       }
-    }
 
-    const tabButtons = document.querySelectorAll("[data-target]");
-
-    if (tabButtons.length > 0) {
-      changeHeadingStyle(
-        tabButtons[0],
-        ["text-orange-400", "dark:text-orange-300"],
-        []
-      );
-    }
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        tabButtons.forEach((btn) => setButtonInactive(btn, button));
-        activateButton(button);
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          tabButtons.forEach((btn) => setButtonInactive(btn, button));
+          activateButton(button);
+        });
       });
     });
-  });
-</script>
+  </script>

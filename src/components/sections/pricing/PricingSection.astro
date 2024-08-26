@@ -1,35 +1,35 @@
 ---
 // Import SecondaryCTA component for use in this module
-import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
-import Icon from "@components/ui/icons/Icon.astro";
+import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro'
+import Icon from '@components/ui/icons/Icon.astro'
 
 // Define props from Astro
-const { pricing } = Astro.props;
+const { pricing } = Astro.props
 
 // Define TypeScript type for products.
 type Product = {
-  name: string;
-  description: string;
-  price: string;
-  cents: string;
-  billingFrequency: string;
-  features: Array<string>;
-  purchaseBtnTitle: string;
-  purchaseLink: string;
-};
+  name: string
+  description: string
+  price: string
+  cents: string
+  billingFrequency: string
+  features: Array<string>
+  purchaseBtnTitle: string
+  purchaseLink: string
+}
 
 interface PricingSectionProps {
-  title: string;
-  subTitle: string;
-  badge: string;
-  thirdOption: string;
-  btnText: string;
+  title: string
+  subTitle: string
+  badge: string
+  thirdOption: string
+  btnText: string
   pricing: {
-    title: string;
-    subTitle: string;
-    starterKit: Product;
-    professionalToolbox: Product;
-  };
+    title: string
+    subTitle: string
+    starterKit: Product
+    professionalToolbox: Product
+  }
 }
 ---
 
