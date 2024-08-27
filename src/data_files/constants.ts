@@ -1,4 +1,5 @@
 import ogImageSrc from '@images/social.png'
+import type { WebPage, WithContext } from 'schema-dts'
 
 export const SITE = {
 	title: 'ScrewFast',
@@ -28,7 +29,7 @@ export const SEO = {
 			name: SITE.title,
 			description: SITE.description,
 		},
-	},
+	} satisfies WithContext<WebPage>,
 }
 
 export const OG = {
@@ -39,4 +40,13 @@ export const OG = {
 	description:
 		"Equip your projects with ScrewFast's top-quality hardware tools and expert construction services. Trusted by industry leaders, ScrewFast offers simplicity, affordability, and reliability. Experience the difference with user-centric design and cutting-edge tools. Start exploring now!",
 	image: ogImageSrc,
+} satisfies OGSettings
+
+export type OGSettings = {
+	locale: 'en_US'
+	type: 'website'
+	url: string
+	title: string
+	description: string
+	image: ImageMetadata
 }
