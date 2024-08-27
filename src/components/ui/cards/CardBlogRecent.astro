@@ -35,11 +35,7 @@ interface Props {
     >
       <a
         class="outline-none ring-zinc-500 transition duration-300 hover:text-orange-400 focus-visible:ring dark:text-neutral-300 dark:ring-zinc-200 dark:hover:text-neutral-50 dark:focus:outline-none"
-<<<<<<< HEAD
-        href={recentBlogLocale !== "" ? `/${recentBlogLocale}/blog/${blogEntry.slug}/` : `/blog/${blogEntry.slug}/`}
-=======
         href={`/blog/${blogEntry.slug}/`}
->>>>>>> 3e74723 (Refactored hard-coded color hex values in various components to use unified color definitions from Tailwind CSS config file. Additionally, updated import paths following the addition of new paths in tsconfig.json. This improves code readability and maintainability as custom color definitions are consolidated in one place and import paths are made more concise.)
       >
         {blogEntry.data.description}
       </a>
@@ -60,7 +56,7 @@ interface Props {
     <!-- Read More button which is a link to the blog post detailed page -->
     <div class="mt-5">
       <PrimaryCTA
-        url={recentBlogLocale !== "" ? `/${recentBlogLocale}/blog/${blogEntry.slug}/` : `/blog/${blogEntry.slug}/`}
+        url={`/blog/${blogEntry.slug}/`}
         title="Read More"
         data-astro-prefetch
       />

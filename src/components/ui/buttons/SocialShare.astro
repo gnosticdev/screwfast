@@ -1,5 +1,5 @@
 ---
-import Icon from '@components/ui/icons/Icon.astro'
+import Icon from '@/components/ui/icons/Icon.astro'
 // Destructure the properties from Astro.props
 const { pageTitle } = Astro.props
 
@@ -43,7 +43,7 @@ const socialPlatforms: SocialPlatform[] = [
   >
     <Icon name="share" />
 
-    {title}
+    {}
   </button>
 
   <div
@@ -110,15 +110,8 @@ const socialPlatforms: SocialPlatform[] = [
 <!-- https://clipboardjs.com/ -->
 <script>
   import "@preline/dropdown/index.js";
-<<<<<<< HEAD
-</script>
-
-<script>
-  import ClipboardJS from "clipboard";
-=======
+import ClipboardJS from "clipboard";
   import "clipboard/dist/clipboard.min.js";
-</script>
->>>>>>> 66638c1 (Add navigation menu, smooth scrolling and theme select feature)
 
   // Initialization of Clipboard
   (function () {
@@ -126,10 +119,10 @@ const socialPlatforms: SocialPlatform[] = [
       const clipboards =
         document.querySelectorAll<HTMLElement>(".js-clipboard");
 
-      clipboards.forEach((el) => {
-        const clipboard = new ClipboardJS(el, {
-          text: () => {
-            return window.location.href;
+    clipboards.forEach((el: HTMLElement) => {
+      const clipboard = new ClipboardJS(el, {
+        text: () => {
+          return window.location.href;
           },
         });
 
