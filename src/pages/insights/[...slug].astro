@@ -8,23 +8,17 @@ import { SITE } from '@data/constants'
 // Use `getStaticPaths` to generate static routes for generated pages on build
 export async function getStaticPaths() {
   const insightPosts = await getCollection('insights')
-  const insightPosts = await getCollection('insights')
   return insightPosts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }))
 }
-))
-}
 
 // Get the props for this page that define a specific insight post
 const { post } = Astro.props
-const { post } = Astro.props
 
 const { Content } = await post.render()
-const { Content } = await post.render()
 
-const pageTitle: string = `${post.data.title} | ${SITE.title}`
 const pageTitle: string = `${post.data.title} | ${SITE.title}`
 ---
 
